@@ -1,19 +1,29 @@
-import 'package:atendi/scan_qr_screen.dart';
 import 'package:flutter/material.dart';
+import 'screens/home_screen.dart';
+import 'screens/scan_qr_code_screen.dart';
+import 'screens/generate_qr_code_screen.dart';
+import 'screens/history_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Atendi',
-      theme: ThemeData(primarySwatch: Colors.grey),
-      home: const ScanQRScreen(),
+      debugShowCheckedModeBanner: false,
+      title: 'Interfone Digital',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomeScreen(),
+        '/generate': (context) => const GenerateQRCodeScreen(),
+        '/scan': (context) => const ScanQRCodeScreen(),
+        '/history': (context) => const HistoryScreen(),
+      },
     );
   }
 }
